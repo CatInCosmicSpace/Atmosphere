@@ -119,6 +119,7 @@ void __appInit(void) {
         lr::Initialize();
         R_ABORT_UNLESS(ldr::InitializeForShell());
         R_ABORT_UNLESS(pgl::Initialize());
+        R_ABORT_UNLESS(setsysInitialize());
         /* TODO: Other services? */
     });
 
@@ -127,6 +128,7 @@ void __appInit(void) {
 
 void __appExit(void) {
     /* TODO: Other services? */
+    setsysExit();
     pgl::Finalize();
     ldr::FinalizeForShell();
     lr::Finalize();
